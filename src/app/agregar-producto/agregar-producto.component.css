@@ -6,3 +6,12 @@
 .back{
 	margin-bottom: 40px;
 }
+
+@media (max-width: 580px) {
+	:host{
+		display: block;
+		width: 98%;
+		margin-bottom: 16px;
+		padding: 10px;
+	}
+}

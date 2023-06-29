@@ -8,3 +8,11 @@ th{
 	margin-top: 32px;
 }
 :host{overflow: auto;}
+
+@media (max-width: 580px) {
+	th{
+		width: 100px;
+		margin-right: 10px;
+	}
+	:host{padding: 10px;}
+  }

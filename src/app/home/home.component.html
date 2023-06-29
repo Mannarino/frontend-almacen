@@ -1,0 +1,33 @@
+
+<div class="botonera">
+   <button type="button" routerLink="../agregar-producto" class="btn btn-primary">agregar producto</button>
+   <button type="button" routerLink="../productos-faltantes" class="btn btn-primary">faltantes</button>
+</div>
+<input type="text"
+        class="form-control mb-4 mt-4"
+        placeholder="Buscar "
+        #txtSearch
+        (keyup)="onSearchProducto( txtSearch.value )" />
+
+<table class="table">
+    <thead>
+        <tr> 
+            <th>Nombre</th>
+            <th>precio de costo</th>
+            <th>porcentaje ganancia</th>
+            <th>precio final</th>
+            <th>editar</th>
+            <th>eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of lista | buscador:search">
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precioCosto }}</td>
+            <td>{{ producto.porcentajeGanancia }}</td>
+            <td>{{ producto.precioFinal }}</td>
+            <td><button type="button" routerLink="../editar-producto/{{producto._id}}" class="btn btn-primary">edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="eliminar(producto._id)">eliminar</button></td>
+        </tr>
+    </tbody>
+</table>   

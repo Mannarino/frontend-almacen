@@ -10,6 +10,8 @@ import { BuscadorPipe } from './buscador.pipe';
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { EditarProductoComponent } from './editar-producto/editar-producto.component';
 import { ProductoFaltanteComponent } from './producto-faltante/producto-faltante.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,13 @@ import { ProductoFaltanteComponent } from './producto-faltante/producto-faltante
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

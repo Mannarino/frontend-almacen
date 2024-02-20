@@ -25,20 +25,5 @@ export class ProductosService {
      return this.http.delete(`${environment.url_endpoint}/productos/${id}`)
     }
 
-  obtenerPrecioFinal(precioCosto,porcentajeGanado,precioFinal){
   
-  	if(porcentajeGanado<10){
-  		let porcentajeACalcular ="1.0"+porcentajeGanado
-  		let porcentajeACalcularConvertido = Number(porcentajeACalcular)
-  	  let preciofinal = precioCosto * porcentajeACalcularConvertido
- 
-  	    precioFinal.setValue(preciofinal.toFixed(0))
-  	}else{
-  		let porcentajeACalcular ="1."+porcentajeGanado
-  		let porcentajeACalcularConvertido = Number(porcentajeACalcular)
-  		let preciofinal = precioCosto * porcentajeACalcularConvertido
- 
-  	    precioFinal.setValue(preciofinal.toFixed(0))
-    }
-  } 
 }

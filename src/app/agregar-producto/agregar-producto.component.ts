@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup } from '@angular/forms'
 import { ProductosService } from '../services/productos.service';
+import { CalculationsService } from '../services/calculations.service';
 
 
 @Component({
@@ -20,21 +21,13 @@ export class AgregarProductoComponent implements OnInit {
   		precioFinal : new FormControl(''),
     })	
   }
-  constructor(private productosService:ProductosService) { 
+  constructor(private productosService:ProductosService,
+              private caculationsService:CalculationsService) { 
   		this.buildForm();
   }
 
   ngOnInit(): void {
-  	let precioCosto = this.form.get("precioCosto")
-    let porcentajeGanancia = this.form.get("porcentajeGanancia")
-
-  	this.form.get("porcentajeGanancia").valueChanges.subscribe(value=>{
-      this.productosService.obtenerPrecioFinal( precioCosto.value,porcentajeGanancia.value, this.form.get("precioFinal"))
-    })    
-       
-  	this.form.get("precioCosto").valueChanges.subscribe(value=>{
-  	  this.productosService.obtenerPrecioFinal(precioCosto.value,porcentajeGanancia.value, this.form.get("precioFinal"))
-    })  
+  	this.watchAndSetFinalPriceInputControl()
   }
 
   save(event: Event) {
@@ -58,5 +51,19 @@ export class AgregarProductoComponent implements OnInit {
     this.form.get("precioCosto").setValue('')
     this.form.get("porcentajeGanancia").setValue('')
     this.form.get("precioFinal").setValue('')
+  }
+  watchAndSetFinalPriceInputControl(){
+    let precioCosto = this.form.get("precioCosto")
+    let porcentajeGanancia = this.form.get("porcentajeGanancia")
+
+  	this.form.get("porcentajeGanancia").valueChanges.subscribe(value=>{
+      let CalculatedPrice = this.caculationsService.obtenerPrecioFinal( precioCosto.value,porcentajeGanancia.value )
+      this.form.get("precioFinal").setValue(CalculatedPrice.toFixed(0))
+    })    
+       
+  	this.form.get("precioCosto").valueChanges.subscribe(value=>{
+  	  let CalculatedPrice = this.caculationsService.obtenerPrecioFinal( precioCosto.value,porcentajeGanancia.value )
+      this.form.get("precioFinal").setValue(CalculatedPrice.toFixed(0))
+    })  
   }
 }

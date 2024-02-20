@@ -4,6 +4,7 @@ import { ProductosService } from '../services/productos.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Producto} from './../interfaces/producto'
 import { CalculationsService } from '../services/calculations.service';
+import { WatchAndSetService } from '../services/watch-and-set.service';
 
 @Component({
   selector: 'app-editar-producto',
@@ -28,23 +29,12 @@ export class EditarProductoComponent implements OnInit {
   constructor( private productosService:ProductosService,
   	           private route: ActivatedRoute,
   	           private router: Router,
-               private caculationsService:CalculationsService
+              private watchAndSetService:WatchAndSetService
   	         ) 
              { this.buildForm()}
 
   ngOnInit(): void {
-    let precioCosto = this.form.get("precioCosto")
-    let porcentajeGanancia = this.form.get("porcentajeGanancia")
-
-  	this.form.get("porcentajeGanancia").valueChanges.subscribe(value=>{
-      let CalculatedPrice = this.caculationsService.obtenerPrecioFinal( precioCosto.value,porcentajeGanancia.value )
-      this.form.get("precioFinal").setValue(CalculatedPrice.toFixed(0))
-    })    
-       
-  	this.form.get("precioCosto").valueChanges.subscribe(value=>{
-      let CalculatedPrice = this.caculationsService.obtenerPrecioFinal( precioCosto.value,porcentajeGanancia.value )
-      this.form.get("precioFinal").setValue(CalculatedPrice.toFixed(0))
-    })  
+    this.watchAndSetService.watchAndSetFinalPriceInputControl(this.form)
   
   	this.route.params.subscribe(params => {
         this.parametro = params['id'];

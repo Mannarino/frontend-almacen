@@ -8,20 +8,16 @@ export class CalculationsService {
   constructor() { }
   obtenerPrecioFinal(precioCosto,porcentajeGanado){
   
-  	if(porcentajeGanado<10){
-  		let porcentajeACalcular ="1.0"+porcentajeGanado
-  		let porcentajeACalcularConvertido = Number(porcentajeACalcular)
-  	  let precioFinal = precioCosto * porcentajeACalcularConvertido
-	  console.log('anda el servicio calculations')
-      return precioFinal
-  	    
-  	}else{
-  		let porcentajeACalcular ="1."+porcentajeGanado
-  		let porcentajeACalcularConvertido = Number(porcentajeACalcular)
-  		let precioFinal = precioCosto * porcentajeACalcularConvertido
-		console.log('anda el servicio calculations')
-      return precioFinal
-  	  
+	let porcentajeACalcular;
+  
+    if (porcentajeGanado < 10) {
+        porcentajeACalcular = 1 + porcentajeGanado / 100;
+    } else {
+        porcentajeACalcular = 1 + porcentajeGanado / 100;
     }
+
+    let precioFinal = precioCosto * porcentajeACalcular;
+    console.log('El servicio de cálculo funciona correctamente.');
+    return precioFinal;
   } 
 }

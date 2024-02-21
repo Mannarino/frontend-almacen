@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup } from '@angular/forms'
-import { ProductosService } from '../services/productos.service';
+import { ProductosService } from '../core/productos.service';
 import { CalculationsService } from '../services/calculations.service';
 import { WatchAndSetService } from '../services/watch-and-set.service';
 

@@ -11,9 +11,11 @@ export class ProductosService {
 
   agregarProducto(producto){
      return this.http.post(`${environment.url_endpoint}/productos/`,producto)
+
     }
   getAllProducts(){
-     return this.http.get(`${environment.url_endpoint}/productos/`)
+    console.log('se consolea cada vez que se haga un request para obtener la lista')
+     return this.http.get(`${environment.url_endpoint}/productos/`); 
     }
   getOneProduct<Producto>(id){
      return this.http.get(`${environment.url_endpoint}/productos/${id}`)

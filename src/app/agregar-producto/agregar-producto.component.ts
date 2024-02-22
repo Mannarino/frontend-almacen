@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup } from '@angular/forms'
-import { ProductosService } from '../services/productos.service';
+import { ProductosService } from '../core/productos.service';
 import { CalculationsService } from '../services/calculations.service';
 import { WatchAndSetService } from '../services/watch-and-set.service';
 
@@ -31,10 +31,10 @@ export class AgregarProductoComponent implements OnInit {
   	this.watchAndSetService.watchAndSetFinalPriceInputControl(this.form)
   }
 
-  save(event: Event) {
+  addProduct(event: Event) {
     event.preventDefault();
     const value = this.form.value;
-    this.productosService.agregarProducto(value)
+    this.productosService.addProduct(value)
     .subscribe(
       producto =>{ 
         this.limpiarFormulario()

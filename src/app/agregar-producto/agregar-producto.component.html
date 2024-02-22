@@ -3,7 +3,7 @@
 <div  class="alert alert-success ocultar "  *ngIf="sucess" role="alert">
    el producto se agrego exitosamente
  </div>
-<form [formGroup]="form" (ngSubmit)="save($event);">
+<form [formGroup]="form" (ngSubmit)="addProduct($event);">
     <div class="mb-3">
        <label for="nombre" class="form-label">ingrese nombre de producto</label>
        <input type="text" class="form-control" id="nombre" placeholder="nombre"

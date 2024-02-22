@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductosService } from '../services/productos.service';
+import { ProductosService } from '../core/productos.service';
+import { StateManagetService } from '../core/state-managet.service';
+import { Producto } from '../interfaces/producto';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,13 +10,14 @@ import { ProductosService } from '../services/productos.service';
 export class HomeComponent implements OnInit {
   title = 'searcher';
   public search: string = '';
-  public lista;
-  constructor(private productosService:ProductosService) { }
+  lista: Producto[];
+  constructor(private productosService:ProductosService,
+              private managetStateService:StateManagetService) { }
 
   ngOnInit(): void {
-    //obtengo todos los productos y los cargo en la propiedad lista para pintarlos en la vista
-    this.productosService.getAllProducts()
-     .subscribe(value =>{ this.lista = value})
+    this.managetStateService.lista$.subscribe(lista => {
+      this.lista = lista;
+    });
   }
   
   onSearchProducto( search: string ) {
@@ -23,9 +26,7 @@ export class HomeComponent implements OnInit {
    eliminar(id){
      this.productosService.deleteProducto(id)
      .subscribe(value => {
-      //elimino (el producto eliminado en el backend) de la lista de productos descargada en local
-       let productIndex = this.lista.findIndex(item => item._id === id)
-       this.lista.splice(productIndex,1)
+      console.log('eliminado correctamente')
        })
    }
 }

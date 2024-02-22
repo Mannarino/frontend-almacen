@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductosService } from './core/productos.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+  constructor(private productosService:ProductosService) { }
+  ngOnInit(): void {
+    //obtengo todos los productos de la api rest 
+    this.productosService.getAllProducts()
+     
+  }
+  
 }

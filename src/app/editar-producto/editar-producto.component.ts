@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup } from '@angular/forms'
-import { ProductosService } from '../services/productos.service';
+import { ProductosService } from '../core/productos.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Producto} from './../interfaces/producto'
 import { CalculationsService } from '../services/calculations.service';
@@ -52,7 +52,7 @@ export class EditarProductoComponent implements OnInit {
   actualizar(event: Event) {
     event.preventDefault();
     const value = this.form.value;
-    this.productosService.actualizarProducto(value,this.form.get("_id").value)
+    this.productosService.updateProduct(value,this.form.get("_id").value)
     .subscribe(producto =>{ 
         this.sucess=true
         setTimeout(()=>{ this.sucess=false},3000)

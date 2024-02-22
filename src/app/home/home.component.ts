@@ -26,9 +26,7 @@ export class HomeComponent implements OnInit {
    eliminar(id){
      this.productosService.deleteProducto(id)
      .subscribe(value => {
-      //elimino (el producto eliminado en el backend) de la lista de productos descargada en local
-       let productIndex = this.lista.findIndex(item => item._id === id)
-       this.lista.splice(productIndex,1)
+      console.log('eliminado correctamente')
        })
    }
 }

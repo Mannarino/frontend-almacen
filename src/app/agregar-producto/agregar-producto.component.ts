@@ -31,7 +31,7 @@ export class AgregarProductoComponent implements OnInit {
   	this.watchAndSetService.watchAndSetFinalPriceInputControl(this.form)
   }
 
-  save(event: Event) {
+  addProduct(event: Event) {
     event.preventDefault();
     const value = this.form.value;
     this.productosService.agregarProducto(value)

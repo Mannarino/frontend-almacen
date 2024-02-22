@@ -12,33 +12,33 @@ export class ProductosService {
   constructor(private http: HttpClient,
               private stateManagetService:StateManagetService) { }
 
-  agregarProducto(producto){
+  addProduct(producto){
      return this.http.post(`${environment.url_endpoint}/productos/`,producto)
               .pipe(
                 tap((response:Producto) => {
                   console.log(response)
                   // Aquí puedes ejecutar otro método 
-                  this.stateManagetService.agregarElemento(response);
+                  this.stateManagetService.addElement(response);
                 })
     );
     }
   getAllProducts(){
       this.http.get(`${environment.url_endpoint}/productos/`)
       .subscribe( (value:Producto[]) =>{
-        this.stateManagetService.actualizarLista(value)
+        this.stateManagetService.getList(value)
         console.log('se consolea cada vez que se hace un request para obtener toda la lista')
       })
     }
   getOneProduct<Producto>(id){
      return this.http.get(`${environment.url_endpoint}/productos/${id}`)
     } 
-  actualizarProducto(producto,id){
+  updateProduct(producto,id){
      return this.http.put(`${environment.url_endpoint}/productos/${id}`,producto)
               .pipe(
                 tap((response:Producto) => {
                   console.log(producto)
                   // Aquí puedes ejecutar otro método 
-                  this.stateManagetService.editarElemento(id,producto);
+                  this.stateManagetService.editElement(id,producto);
                 })
           );
     }
@@ -46,7 +46,7 @@ export class ProductosService {
      return this.http.delete(`${environment.url_endpoint}/productos/${id}`)
               .pipe(
                 tap((response:Producto) => {
-                  this.stateManagetService.eliminarElemento(id);
+                  this.stateManagetService.deleteElement(id);
                 })
 );
 

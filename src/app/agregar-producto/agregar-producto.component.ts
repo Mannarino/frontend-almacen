@@ -34,7 +34,7 @@ export class AgregarProductoComponent implements OnInit {
   addProduct(event: Event) {
     event.preventDefault();
     const value = this.form.value;
-    this.productosService.agregarProducto(value)
+    this.productosService.addProduct(value)
     .subscribe(
       producto =>{ 
         this.limpiarFormulario()

@@ -10,17 +10,17 @@ export class StateManagetService {
 
   constructor() { }
 
-  actualizarLista(nuevaLista: Producto[]): void {
+  getList(nuevaLista: Producto[]): void {
     this.listaSubject.next(nuevaLista);
   }
 
-  agregarElemento(elemento: Producto): void {
+  addElement(elemento: Producto): void {
     const listaActual = this.listaSubject.getValue();
     const nuevaLista = [...listaActual, elemento];
     this.listaSubject.next(nuevaLista);
   }
 
-  eliminarElemento(id: string): void {
+  deleteElement(id: string): void {
     const listaActual = this.listaSubject.getValue();
     const indice = listaActual.findIndex(producto => producto._id === id);
     if (indice !== -1) {
@@ -32,7 +32,7 @@ export class StateManagetService {
   }
   
  
-  editarElemento(id: string, nuevoProducto: Producto): void {
+  editElement(id: string, nuevoProducto: Producto): void {
     const listaActual = this.listaSubject.getValue();
     console.log('Lista actual:', listaActual);
     

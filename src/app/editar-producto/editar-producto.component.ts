@@ -52,7 +52,7 @@ export class EditarProductoComponent implements OnInit {
   actualizar(event: Event) {
     event.preventDefault();
     const value = this.form.value;
-    this.productosService.actualizarProducto(value,this.form.get("_id").value)
+    this.productosService.updateProduct(value,this.form.get("_id").value)
     .subscribe(producto =>{ 
         this.sucess=true
         setTimeout(()=>{ this.sucess=false},3000)

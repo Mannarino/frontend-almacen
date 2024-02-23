@@ -25,9 +25,16 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/alertify/themes/alertify.bootstrap.css",
+              "node_modules/alertify/themes/alertify.core.css",
+              "node_modules/alertify/themes/alertify.default.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/alertify/lib/alertify.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {

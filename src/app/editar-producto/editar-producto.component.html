@@ -7,9 +7,7 @@
     <a class="navbar-brand" href="#">vas a actualizar un producto</a>
   </div>
 </nav>
-<div  class="alert alert-success ocultar "  *ngIf="sucess" role="alert">
-   el producto se actualizo exitosamente
- </div>
+
 <form [formGroup]="form" (ngSubmit)="actualizar($event);">
     <div class="mb-3">
        <label for="nombre" class="form-label">ingrese nombre de producto</label>

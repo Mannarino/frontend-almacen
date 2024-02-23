@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup } from '@angular/forms'
+import { AlertifyMessagesService } from '../core/alertify-messages.service';
 import { ProductosService } from '../core/productos.service';
 import { CalculationsService } from '../services/calculations.service';
 import { WatchAndSetService } from '../services/watch-and-set.service';
@@ -12,7 +13,7 @@ import { WatchAndSetService } from '../services/watch-and-set.service';
 })
 export class AgregarProductoComponent implements OnInit {
   
-  sucess =false
+  
   form: FormGroup
   private buildForm() {
     this.form = new FormGroup({
@@ -23,7 +24,8 @@ export class AgregarProductoComponent implements OnInit {
     })	
   }
   constructor(private productosService:ProductosService,
-              private watchAndSetService:WatchAndSetService) { 
+              private watchAndSetService:WatchAndSetService,
+              private alertifyMesaggesService:AlertifyMessagesService) { 
   		this.buildForm();
   }
 
@@ -38,12 +40,10 @@ export class AgregarProductoComponent implements OnInit {
     .subscribe(
       producto =>{ 
         this.limpiarFormulario()
-        this.sucess=true
-        setTimeout(()=>{ this.sucess=false},2000)
+        this.alertifyMesaggesService.addItemMessage()
       },
       error => {
-          console.error('Error al agregar el producto:', error);
-          alert('error en el servidor  al querer agregar  un producto a la lista de productos, pruebe mas tarde')
+          this.alertifyMesaggesService.errorServer()
       })
   }
 

@@ -14,7 +14,7 @@ import { WatchAndSetService } from '../services/watch-and-set.service';
 export class EditarProductoComponent implements OnInit {
   
   parametro
-  sucess =false
+  
   form: FormGroup
   private buildForm() {
     this.form = new FormGroup({
@@ -53,14 +53,6 @@ export class EditarProductoComponent implements OnInit {
     event.preventDefault();
     const value = this.form.value;
     this.productosService.updateProduct(value,this.form.get("_id").value)
-    .subscribe(producto =>{ 
-        this.sucess=true
-        setTimeout(()=>{ this.sucess=false},3000)
-    },
-    error => {
-        console.error('Error al editar el producto:', error);
-        alert('error en el servidor  al querer editar un producto a la lista de productos,pruebe mas tarde')
-    })
   }
 	
 }

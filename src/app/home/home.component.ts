@@ -25,8 +25,5 @@ export class HomeComponent implements OnInit {
   }
    eliminar(id){
      this.productosService.deleteProducto(id)
-     .subscribe(value => {
-      console.log('eliminado correctamente')
-       })
    }
 }

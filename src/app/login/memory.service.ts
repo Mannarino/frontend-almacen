@@ -8,13 +8,20 @@ export class MemoryService {
   constructor() { }
   rememberUserAndPassword(remember:boolean | null,user:string, password:string){
     if (remember) {
-       localStorage.setItem('user',user);
-       localStorage.setItem('password',password);
+       this.saveUserAndPassword(user,password)
     } else {
-       localStorage.removeItem('user');
-       localStorage.removeItem('password');
+       this.cleanLocalstorage()
     }
   }
+  saveUserAndPassword(user:string, password:string){
+    localStorage.setItem('user',user);
+    localStorage.setItem('password',password);
+  }
+  cleanLocalstorage(){
+    localStorage.removeItem('user');
+    localStorage.removeItem('password');
+  }
+  
   checkLogin(){
     const user=localStorage.getItem('user');
     const password=localStorage.getItem('password');

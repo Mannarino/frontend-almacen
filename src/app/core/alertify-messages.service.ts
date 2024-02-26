@@ -18,6 +18,9 @@ export class AlertifyMessagesService {
   errorServer(){
     alertify.error('error en el servidor, intente luego'); 
   }
+  invalidUser(){
+    alertify.error('el usuario o contraseña fue incorrecta'); 
+  }
 }
 
 

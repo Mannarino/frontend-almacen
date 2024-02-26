@@ -12,6 +12,7 @@ import { EditarProductoComponent } from './editar-producto/editar-producto.compo
 import { ProductoFaltanteComponent } from './producto-faltante/producto-faltante.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HeaderComponent } from './home/header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { environment } from '../environments/environment';
     BuscadorPipe,
     AgregarProductoComponent,
     EditarProductoComponent,
-    ProductoFaltanteComponent
+    ProductoFaltanteComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

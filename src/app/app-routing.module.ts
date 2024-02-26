@@ -4,8 +4,10 @@ import {HomeComponent} from './home/home.component'
 import {AgregarProductoComponent} from './agregar-producto/agregar-producto.component'
 import {EditarProductoComponent} from './editar-producto/editar-producto.component'
 import {ProductoFaltanteComponent} from './producto-faltante/producto-faltante.component'
+
 const routes: Routes = [
-{path:'', redirectTo:'home', pathMatch:'full'},
+{path:'', redirectTo:'login', pathMatch:'full'},
+{ path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) }, 
 {path:'home', component:HomeComponent},
 {path:'agregar-producto', component:AgregarProductoComponent},
 {path:'productos-faltantes', component:ProductoFaltanteComponent},

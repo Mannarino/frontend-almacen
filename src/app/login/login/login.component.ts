@@ -3,7 +3,7 @@ import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertifyMessagesService } from 'src/app/core/alertify-messages.service';
 import { HttpRequestService } from '../http-request.service';
-import { MemoryService } from '../memory.service';
+import { MemoryService } from '../../core/memory.service';
 
 @Component({
   selector: 'app-login',
@@ -66,6 +66,9 @@ export class LoginComponent implements OnInit {
               
                }) 
   }           
-               
+  accessLikeEmpoyer(){
+    this.memoryService.cleanLocalstorage()
+    this.router.navigate(['/home']); 
+  }             
 
 }

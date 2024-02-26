@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../core/productos.service';
 import { StateManagetService } from '../core/state-managet.service';
 import { Producto } from '../interfaces/producto';
-import { MemoryService } from '../login/memory.service';
+import { MemoryService } from '../core/memory.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

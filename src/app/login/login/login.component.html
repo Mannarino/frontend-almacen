@@ -29,13 +29,13 @@
     <!-- button of login-->
     <div class="login-botones">
       <button type="button" class="btn btn-primary" 
-      [disabled]="!form.valid"   (click)="access()">loguin</button>
+        (click)="access()">loguin</button>
     </div> 
     <!--end button of login-->
 
-     <div class="input-group mb-3">
+     <div class="input-group mb-3 with-margin-top">
        <button type="button" class="btn btn-secondary" 
-        routerLink="/home">entrar como empleado</button>
+        (click)="accessLikeEmpoyer()">entrar como empleado</button>
      </div>
   </form>
   <!--end form grup-->

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MemoryService } from 'src/app/login/memory.service';
+import { MemoryService } from 'src/app/core/memory.service';
 
 @Component({
   selector: 'app-header',

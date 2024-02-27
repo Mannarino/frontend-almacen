@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
  
   showPassword: boolean = false;
- 
+  procesandoImg=false
   form = new FormGroup({
     user: new FormControl('',[Validators.required]),
     password: new FormControl('', Validators.required),
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
   access(): void {
+    this.procesandoImg = true
     const remember = this.form.get('remember')?.value 
     const user = this.form.get('user')?.value
     const password = this.form.get('password')?.value
@@ -55,12 +56,14 @@ export class LoginComponent implements OnInit {
            .subscribe(
               
                data => {
+              this.procesandoImg = false
                this.memoryService.saveUserAndPassword(user,password)
                console.log(data)
                this.router.navigate(['/home']); 
             
                },
                error => {
+                this.procesandoImg = false
                 this.notificationAlertifyMessages.invalidUser()
                 this.memoryService.cleanLocalstorage()
               

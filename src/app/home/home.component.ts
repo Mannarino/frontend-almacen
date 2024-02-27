@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
   public search: string = '';
   lista: Producto[];
   logueado=false
+  cargandoWarning = true
+  procesandoImg = true
+  cargado = false
+  count= 1
   constructor(private productosService:ProductosService,
               private managetStateService:StateManagetService,
               private memoryService:MemoryService) { }
@@ -20,6 +24,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.managetStateService.lista$.subscribe(lista => {
       this.lista = lista;
+      this.count ++
+      if(this.count > 2){
+        this.cargandoWarning = false
+        this.cargado = true
+      }
+      
     });
     this.logueado=this.memoryService.checkLogin()
   }

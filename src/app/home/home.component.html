@@ -9,7 +9,10 @@
         #txtSearch
         (keyup)="onSearchProducto( txtSearch.value )" />
 
-<table class="table">
+<h3 *ngIf="cargandoWarning">Cargando datos, por favor espere...</h3>
+<img src="assets/cargando.gif" *ngIf="cargandoWarning">
+
+<table class="table"  *ngIf="cargado">
     <thead>
         <tr> 
             <th>Nombre</th>
@@ -31,3 +34,4 @@
         </tr>
     </tbody>
 </table>   
+

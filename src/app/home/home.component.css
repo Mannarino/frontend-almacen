@@ -19,7 +19,9 @@ th{
 
   img{
 	margin: auto;
-	width: 100%;
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
   }
   h3 {
 	font-family: Arial, sans-serif;

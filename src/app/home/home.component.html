@@ -12,6 +12,13 @@
 <h3 *ngIf="cargandoWarning">Cargando datos, por favor espere...</h3>
 <img src="assets/cargando.gif" *ngIf="cargandoWarning">
 
+<button type="button" class="btn btn-primary position-relative">
+    cantidad productos
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      {{cantidadProductos}}
+      <span class="visually-hidden">unread messages</span>
+    </span>
+  </button>
 <table class="table"  *ngIf="cargado">
     <thead>
         <tr> 
